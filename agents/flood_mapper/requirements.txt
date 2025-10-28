@@ -1,5 +1,5 @@
-strands
-geemap
 earthengine-api
+geemap
 leafmap
+strands
 

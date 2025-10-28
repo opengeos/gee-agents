@@ -1,0 +1,29 @@
+name: flood_mapper
+version: 0.1.0
+description: Compute NDWI over an AOI/date range using Google Earth Engine and visualize results.
+authors:
+  - name: Community
+license: MIT
+framework: strands
+entrypoint: main.py:FloodMapperAgent
+tags: [gee, ndwi, sentinel-2, water]
+dependencies:
+  - strands
+  - geemap
+  - earthengine-api
+  - leafmap
+runtime:
+  python: ">=3.10"
+parameters:
+  aoi:
+    type: object
+    description: GeoJSON-like Polygon or list [minx, miny, maxx, maxy]
+  start_date:
+    type: string
+    description: ISO date (YYYY-MM-DD)
+  end_date:
+    type: string
+    description: ISO date (YYYY-MM-DD)
+  cloud_pct:
+    type: number
+    default: 20

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gee-agents"
+version = "0.1.0"
+description = "Community Strands agents for Google Earth Engine (GEE)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Community contributors" }
+]
+keywords = ["geoai", "earthengine", "strands", "geemap", "leafmap"]
+dependencies = []  # Agents manage their own runtime deps under agents/<name>/requirements.txt
+
+[project.urls]
+Homepage = "https://github.com/opengeos/gee-agents"  # set your org URL as needed
+
+

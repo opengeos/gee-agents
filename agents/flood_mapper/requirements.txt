@@ -1,5 +1,5 @@
 earthengine-api
 geemap
 leafmap
-strands
+strands-agents
 

@@ -29,6 +29,14 @@ result = agent.run(
 print(result)
 ```
 
+Run a script and generate an HTML map:
+
+```
+python example.py
+```
+
+`ndwi_map.html` will be created in the current folder.
+
 Or open `example.ipynb` for an interactive walk-through.
 
 ### Parameters

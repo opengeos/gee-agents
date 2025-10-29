@@ -54,6 +54,7 @@ class FloodMapperAgent(Agent):
 
         ndwi = compute_ndwi(image=image, green_band=green_band, nir_band=nir_band)
         tile_url = get_ndwi_tile_url(ndwi)
+        vis = {"min": -0.2, "max": 0.8, "palette": ["#0000FF", "#00FFFF", "#FFFFFF"]}
 
         # Compute simple stats over the AOI
         geom = _to_ee_geometry(aoi)
@@ -61,13 +62,16 @@ class FloodMapperAgent(Agent):
             reducer=ee.Reducer.mean().combine(ee.Reducer.minMax(), None, True),
             geometry=geom,
             scale=30,
-            maxPixels=1_000_000,
+            maxPixels=50_000_000,
+            bestEffort=True,
         ).getInfo()
 
         return {
             "images_used": count,
             "ndwi_tile_url": tile_url,
             "ndwi_stats": stats,
+            "ndwi_image": ndwi,  # ee.Image for geemap visualization in notebooks
+            "ndwi_vis": vis,
         }
 
     def run_demo(self) -> Dict[str, Any]:

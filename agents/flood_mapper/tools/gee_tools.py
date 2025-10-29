@@ -53,7 +53,7 @@ def load_sentinel2(
     """
     geom = _to_ee_geometry(aoi)
     col = (
-        ee.ImageCollection("COPERNICUS/S2_SR")
+        ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED")
         .filterBounds(geom)
         .filterDate(start_date, end_date)
         .filter(ee.Filter.lte("CLOUDY_PIXEL_PERCENTAGE", cloud_pct))
@@ -64,9 +64,7 @@ def load_sentinel2(
 
 
 @tool
-def compute_ndwi(
-    image: ee.Image, green_band: str = "B3", nir_band: str = "B8"
-) -> ee.Image:
+def compute_ndwi(image: Any, green_band: str = "B3", nir_band: str = "B8") -> Any:
     """Compute NDWI = (G - NIR) / (G + NIR) for the provided image."""
     g = image.select(green_band)
     n = image.select(nir_band)
@@ -75,7 +73,7 @@ def compute_ndwi(
 
 
 @tool
-def get_ndwi_tile_url(image: ee.Image, vis: Dict[str, Any] | None = None) -> str:
+def get_ndwi_tile_url(image: Any, vis: Dict[str, Any] | None = None) -> str:
     """Return a public tile URL for visualizing the NDWI image."""
     vis = vis or {"min": -0.2, "max": 0.8, "palette": ["#0000FF", "#00FFFF", "#FFFFFF"]}
     try:

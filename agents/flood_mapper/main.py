@@ -20,7 +20,6 @@ from tools.gee_tools import (
     get_ndwi_tile_url,
 )
 
-
 BBox = List[float]
 GeoJSON = Dict[str, Any]
 

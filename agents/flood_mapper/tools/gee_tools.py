@@ -13,7 +13,6 @@ except Exception:  # pragma: no cover - fallback for environments without strand
 
 import ee  # type: ignore
 
-
 BBox = List[float]  # [minx, miny, maxx, maxy]
 GeoJSON = Dict[str, Any]
 
